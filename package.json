@@ -2,16 +2,57 @@
   "name": "test",
   "version": "0.1.0",
   "private": true,
+  "main": "public/electron.js",
+  "homepage": ".",
+  "devDependencies": {
+    "electron": "^6.0.7",
+    "electron-builder": "^21.2.0"
+  },
   "dependencies": {
+    "antd": "^3.22.2",
+    "node-sass": "^4.12.0",
+    "nodemon": "^1.19.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-router": "^5.0.1",
     "react-scripts": "3.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron-dev": "nodemon --watch ./src/main.js --exec 'NODE_ENV=development electron .'",
+    "electron": "electron .",
+    "dist": "rm -rf ./dist && electron-builder"
+  },
+  "build": {
+    "appId": "snkrs-electron",
+    "files": [  
+      "package.json",
+      "node_modules/**/*",
+      "build/**/*",
+      "assets",
+      "server",
+      "main.js",
+      "app.config.js"
+    ],
+    "mac": {
+      "category": "public.app-category.video",
+      "target": [
+        "dmg"
+      ],
+      "icon": "./assets/electron.png"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "./assets/electron.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true
+    }
   },
   "eslintConfig": {
     "extends": "react-app"

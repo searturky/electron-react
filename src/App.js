@@ -1,12 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Button } from 'antd';
+import 'antd/dist/antd.css';
+import './App.scss';
 
 function App() {
   return (
     <div className="App">
+      <Button type="primary">11</Button>
+      <Button type="primary">11</Button>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
